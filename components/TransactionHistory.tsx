@@ -9,14 +9,14 @@ export const TransactionHistory = ({ contract }: { contract: any }) => {
 
   const truncateWalletAddress = (address: string) =>
     `${address.slice(0, 6)}...${address.slice(-4)}`;
-  const convertDate = (timestamp: bigint) =>
+  const convertDate = (timestamp: any) =>
     new Date(Number(timestamp) * 1000).toLocaleString();
 
   return (
     <div>
       <h3 style={{ marginBottom: "1rem" }}>Recent Coffees:</h3>
       {contractEvents && contractEvents.length > 0 ? (
-        [...contractEvents].reverse().map((event, index) => {
+        [...contractEvents].reverse().map((event: any, index: number) => {
           const sender = event.args?.sender || "Unknown";
           const timestamp = event.args?.timestamp
             ? convertDate(event.args.timestamp)
